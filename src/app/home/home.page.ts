@@ -14,24 +14,25 @@ export class HomePage {
     this.cards = [];
 
   }
+  
 
-  loadTinderCards() {
+  ngOnInit() {
     this.cards = [
       {
-        title: "Demo card 1",
-        one: "This is a demo for Tinder like swipe cards",
-        two: "This is a demo for Tinder like swipe cards",
-        three: "This is a demo for Tinder like swipe cards",
-        four: "This is a demo for Tinder like swipe cards",
-        five: "This is a demo for Tinder like swipe cards"
+        title: "How many options we have?",
+        one: "1: one",
+        two: "2: two",
+        three: "3: three",
+        four: "4: four",
+        five: "5: five"
       },
       {
-        title: "Demo card 1",
-        one: "This is a demo for Tinder like swipe cards",
-        two: "This is a demo for Tinder like swipe cards",
-        three: "This is a demo for Tinder like swipe cards",
-        four: "This is a demo for Tinder like swipe cards",
-        five: "This is a demo for Tinder like swipe cards"
+        title: "How many options we have?",
+        one: "1: one",
+        two: "2: two",
+        three: "3: three",
+        four: "4: four",
+        five: "5: five"
       },
     ]
   };
