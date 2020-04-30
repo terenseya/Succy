@@ -1,0 +1,41 @@
+<div class="tinder" [hidden]="!cards.length">
+
+  <div class="tinder--status">
+
+    <div [style.opacity]="oneVisible? '1':'0'"><a class="button">1</a></div>
+    <div [style.opacity]="twoVisible? '1':'0'"><a class="button">1</a></div>
+    <div [style.opacity]="threeVisible? '1':'0'"><a class="button">1</a></div>
+    <div [style.opacity]="fourVisible? '1':'0'"><a class="button">1</a></div>
+    <div [style.opacity]="fiveVisible? '1':'0'"><a class="button">1</a></div>
+
+  </div>
+
+  <div class="tinder--cards">
+      <div #tinderCard class="tinder--card" (transitionend)="handleShift()" *ngFor="let card of cards; let i = index"
+          [ngStyle]="{ zIndex: cards.length - i, transform: 'scale(' + (20 - i) / 20 + ') translateY(-' + 20 * i + 'px)' }">
+          <p>{{ card.title }}</p>
+          <h6>{{ card.one }}</h6>
+          <h6>{{ card.two }}</h6>
+          <h6>{{ card.three }}</h6>
+          <h6>{{ card.four }}</h6>
+          <h6>{{ card.five }}</h6>
+      </div>
+
+  </div>
+
+  <div class="tinder--buttons">
+
+  <button (click)="one($event, one)">1</button>
+  <button (click)="two($event, two)">2</button>
+  <button (click)="three($event, three)">3</button>
+  <button (click)="four($event, four)">4</button>
+  <button (click)="five($event, five)">5</button>
+
+  
+
+
+    
+
+  </div>
+
+</div>
