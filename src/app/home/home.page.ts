@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+import { UserService } from '../user.service';
+import { AngularFireFunctions } from '@angular/fire/functions'
 
 @Component({
   selector: 'app-home',
@@ -9,7 +12,7 @@ export class HomePage {
 
   cards;
 
-  constructor() {
+  constructor(private aff: AngularFireFunctions, private afs: AngularFirestore, private user: UserService) {
     
     this.cards = [];
 
@@ -17,7 +20,7 @@ export class HomePage {
   
 
   ngOnInit() {
-    this.cards = [
+     this.cards = [
       {
         title: "How many options we have?",
         one: "1: one",
@@ -26,191 +29,13 @@ export class HomePage {
         four: "4: four",
         five: "5: five"
       },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-      {
-        title: "How many options we have?",
-        one: "1: one",
-        two: "2: two",
-        three: "3: three",
-        four: "4: four",
-        five: "5: five"
-      },
-    ]
-  };
+      ]
+    
+    const getFeed = this.aff.httpsCallable("getFeed")
+    getFeed({}).subscribe(data => {
+    console.log(data)
+    )}
+    
 
+  };
 }

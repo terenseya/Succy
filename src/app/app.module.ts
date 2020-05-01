@@ -14,6 +14,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserService } from './user.service';
+import { AuthService } from './auth.service';
+import { QuestionService } from './question.service';
+
+import { AngularFireFunctionsModule, FunctionsRegionToken } from '@angular/fire/functions';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyA7x61YzPqHej1NSiVLwO_zxxIsln4XEyc",
@@ -35,13 +39,17 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireFunctionsModule
     ],
   providers: [
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService
+    UserService,
+    AuthService,
+    QuestionService,
+    { provide: FunctionsRegionToken, useValue: "us-central1" },
   ],
   bootstrap: [AppComponent]
 })

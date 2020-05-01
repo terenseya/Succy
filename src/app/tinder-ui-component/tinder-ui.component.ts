@@ -14,7 +14,6 @@ export class TinderUIComponent {
     three: string,
     four: string,
     five: string,
-
   }>;
 
   @ViewChildren('tinderCard') tinderCards: QueryList<ElementRef>;
