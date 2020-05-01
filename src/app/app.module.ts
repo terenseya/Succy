@@ -9,14 +9,39 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { UserService } from './user.service';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyA7x61YzPqHej1NSiVLwO_zxxIsln4XEyc",
+  authDomain: "succywtf.firebaseapp.com",
+  databaseURL: "https://succywtf.firebaseio.com",
+  projectId: "succywtf",
+  storageBucket: "succywtf.appspot.com",
+  messagingSenderId: "436246418639",
+  appId: "1:436246418639:web:16d2c18fe54490a50c93ba",
+  measurementId: "G-9QY8TKMKC3"
+};
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    AngularFireDatabase,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth'
-import { auth } from 'firebase/app'
-import { UserService } from '../user.service';
+import { AngularFireAuth } from "@angular/fire/auth";
+import { auth } from "firebase/app";
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
+import { UserService } from '../user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -11,23 +13,24 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-	username: string = ""
-	password: string = ""
+  email: string = ""
+  password: string = ""
 
-	constructor(public afAuth: AngularFireAuth, public user: UserService, public router: Router) { }
+  constructor(public user: UserService, public afAuth: AngularFireAuth, public router: Router) { }
 
-	ngOnInit() {
-	}
+  ngOnInit() {
 
-	async login() {
-		const { username, password } = this
+  }
+
+  async login() {
+		const { email, password } = this
 		try {
 			// kind of a hack. 
-			const res = await this.afAuth.auth.signInWithEmailAndPassword(username + '@codedamn.com', password)
+			const res = await this.afAuth.auth.signInWithEmailAndPassword(email + '@codedamn.com', password)
 			
 			if(res.user) {
 				this.user.setUser({
-					username,
+					email,
 					uid: res.user.uid
 				})
 				this.router.navigate(['/tabs'])
