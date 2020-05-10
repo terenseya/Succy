@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
 import { UserService } from '../user.service';
 import { AngularFireFunctions } from '@angular/fire/functions'
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,11 @@ export class HomePage {
 
   cards;
 
-  constructor(private aff: AngularFireFunctions, private afs: AngularFirestore, private user: UserService) {
+  constructor(private aff: AngularFireFunctions, private afs: AngularFirestore, private user: UserService, private question: QuestionService) {
     
     this.cards = [];
 
   }
-  
 
   ngOnInit() {
      this.cards = [
@@ -30,12 +30,5 @@ export class HomePage {
         five: "5: five"
       },
       ]
-    
-    const getFeed = this.aff.httpsCallable("getFeed")
-    getFeed({}).subscribe(data => {
-    console.log(data)
-    )}
-    
-
   };
 }
